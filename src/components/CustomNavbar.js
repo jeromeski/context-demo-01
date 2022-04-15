@@ -8,7 +8,7 @@ import { useStore } from "../context/auth.context";
 export default function CustomNavbar() {
   useLogger("Navbar");
   const [store, dispatch] = useStore();
-  const { auth } = store;
+  const { isAuth } = store;
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
@@ -22,7 +22,7 @@ export default function CustomNavbar() {
           <Navbar.Brand href="#home">Company Logo</Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
-            {auth ? (
+            {isAuth ? (
               <Fragment>
                 <Navbar.Text>
                   Welcome back <a href="#login">Mark Otto</a> !

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ErrorComponent from "../components/ErrorComponent";
 import { Button, Col, Container, Form, FormGroup, Row } from "react-bootstrap";
 import CustomCard from "../components/CustomCard";
@@ -16,10 +16,19 @@ export default function Login() {
   const handleSubmit = (e) => {
     // e.preventDefault();
     login({ email, password });
-    dispatch({ type: "LOGIN" });
   };
 
-  console.log(data, store);
+  const loginUser = () => {
+    dispatch({ type: "LOGIN", payload: data });
+  };
+
+  useEffect(() => {
+    if (data) {
+      loginUser();
+    }
+  }, [data]);
+
+  console.log(store);
 
   return (
     <Container className="h-100">

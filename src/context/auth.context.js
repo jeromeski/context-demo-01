@@ -7,7 +7,6 @@ const globalContext = React.createContext();
 const getLocalStorageItem = async () => {
   let data = await localforage.getItem("auth");
   data = JSON.parse(data);
-  console.log("getLS", data);
   if (!data) {
     return initialState;
   }
@@ -15,8 +14,8 @@ const getLocalStorageItem = async () => {
 };
 
 export const StoreProvider = ({ children }) => {
-  const [store, dispatch] = React.useReducer(reducer, getLocalStorageItem());
-  console.log("store", store);
+  const [store, dispatch] = React.useReducer(reducer, initialState);
+
   //memoizes the contextValue so only rerenders if store or dispatch change
   const contextValue = React.useMemo(() => [store, dispatch], [
     store,

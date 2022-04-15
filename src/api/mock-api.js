@@ -34,13 +34,13 @@ async function login({ email, password }) {
 
 export function useMutationLogin() {
   return useMutation((input) => login(input), {
-    onSuccess: (user) => {
-      localforage.setItem("auth", JSON.stringify(user)).then((err) => {
-        localforage.getItem("auth").then((val) => {
-          console.log(JSON.parse(val));
-        });
-      });
-    }
+    // onSuccess: (user) => {
+    //   localforage.setItem("auth", JSON.stringify(user)).then((err) => {
+    //     localforage.getItem("auth").then((val) => {
+    //       console.log(JSON.parse(val));
+    //     });
+    //   });
+    // }
   });
 }
 

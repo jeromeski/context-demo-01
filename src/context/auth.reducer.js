@@ -6,14 +6,8 @@ export const initialState = {
     data: {
       displayName: "",
       email: ""
-    },
-    auth: true
+    }
   },
-  errors: {
-    email: false,
-    password: false
-  },
-  isLoading: false,
   isAuth: false
 };
 
@@ -22,11 +16,8 @@ const reducer = (state, action) => {
     case "LOGIN":
       return {
         ...state,
-        user: {
-          ...state.user,
-          [action.field]: action.data
-        },
-        auth: true
+        user: { ...action.payload },
+        isAuth: true
       };
     case "LOGOUT":
       return {
